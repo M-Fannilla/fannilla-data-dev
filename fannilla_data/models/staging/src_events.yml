@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: analytics # dataset name
+    database: inance-capital # project name (top value)
+    tables:
+      - name: user_profiles

@@ -1,0 +1,26 @@
+models:
+  - name: stg_fnevents__user_profiles
+    description: ""
+    columns:
+      - name: event_published_at
+        description: "Date and time when the event was published"
+        tests:
+          - not_null
+      - name: user_id
+        description: "ID of the user"
+        tests:
+          - not_null
+
+      - name: gender
+        description: "gender of the user"
+        tests:
+          - accepted_values:
+                name: unexpected_order_value # name of the test
+                severity: error # severity of the test
+                values:
+                  - 'male'
+                  - 'female'
+                  - 'non-binary'
+
+      - name: country
+        description: "country of the user"
