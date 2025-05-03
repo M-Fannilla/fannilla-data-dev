@@ -1,5 +1,5 @@
 models:
-- name: stg_fnevents__user_profiles
+- name: stg_pg_users__users
   description: ""
   columns:
   - name: event_published_at

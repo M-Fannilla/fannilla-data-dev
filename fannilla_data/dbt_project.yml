@@ -28,3 +28,10 @@ models:
     +persist_docs:
       relation: true
       columns: true
+
+vars:
+  gcp_project: 'fannilla-data'
+  gcp_location: 'EU' # Multi-region
+  users_connection_id: 'pg_conn_users'
+  payments_connection_id: 'pg_conn_payments'
+  content_connection_id: 'pg_conn_content'

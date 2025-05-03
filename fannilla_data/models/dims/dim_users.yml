@@ -1,0 +1,19 @@
+models:
+  - name: dim_users
+    description: "Dimension table for users"
+    columns:
+      - name: user_id
+        description: "ID of the user"
+        tests:
+          - not_null
+
+      - name: gender_id
+        description: "ID of the gender"
+
+      - nmae: age
+        description: "Age of the user"
+        tests:
+          - not_null
+
+      - name: location
+        description: "Location of the user"
