@@ -1,5 +1,5 @@
 {{
-    config(materialized='table')
+    config(materialized='view')
 }}
 
 
@@ -16,16 +16,16 @@ FROM EXTERNAL_QUERY(
     'SELECT 
         id,
         gender_id,
-        email,
         date_of_birth,
+        email,
         location,
-        is_creator,
-        email_verified_at,
-        status_id,
-        is_nsfw,
         wants_nsfw,
-        completed_signup_at,
         created_at,
+        email_verified_at,
+        completed_signup_at,
         deleted_at
+        is_nsfw,
+        is_creator,
+        status_id,
     FROM users'
 )

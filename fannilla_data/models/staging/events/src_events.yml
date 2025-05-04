@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+- name: { ? { var('fanilla_bq_dataset') } } # dataset name
+  database: { ? { var('fannilla_gcp_project') } } # project name (top value)
+  tables:
+  # RealTime -- payments and orders
+  - name: users_orders
+  - name: users_payments
+  - name: users_payments_statuses
+
+  # RealTime -- user-content interactions
+  - name: user_content_interactions
+
+  # RealTime -- content transcoding
+  - name: image_transcoder_request
+  - name: video_transcoder_request
+
+  - name: image_transcoder_success
+  - name: video_transcoder_success
+
+  - name: image_transcoder_failed
+  - name: video_transcoder_failed

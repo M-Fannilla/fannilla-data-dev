@@ -30,6 +30,7 @@ models:
       columns: true
 
 vars:
+  fannilla_gcp_project: 'fanilla-prod'
   gcp_project: 'fannilla-data'
   gcp_location: 'EU' # Multi-region
   users_connection_id: 'pg_conn_users'

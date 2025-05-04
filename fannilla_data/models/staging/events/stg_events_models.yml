@@ -1,0 +1,8 @@
+models:
+- name: stg_events__image_transcoder_failed
+  description: ""
+  columns:
+  - name: event_published_at
+    description: "Date and time when the event was published"
+    tests:
+    - not_null
