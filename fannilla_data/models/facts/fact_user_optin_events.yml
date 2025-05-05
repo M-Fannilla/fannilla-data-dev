@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: fact_user_optin_events
+    description: >
+      Fact table tracking user opt-in events, capturing when users opt into various features
+      or services. This table is materialized as ephemeral and sourced from user optin events.
+    columns:
+      - name: event_timestamp
+        description: Timestamp when the opt-in event occurred
+        tests:
+          - not_null
+      
+      - name: user_id
+        description: ID of the user who performed the opt-in action
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_users')
+              field: user_id
+      
+      - name: event_type
+        description: Type of opt-in event that occurred
+        tests:
+          - not_null 

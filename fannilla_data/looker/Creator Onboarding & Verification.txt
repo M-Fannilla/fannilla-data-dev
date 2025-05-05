@@ -1,0 +1,18 @@
+-- How many new creator accounts daily?
+SELECT 
+    event_date,
+    new_creators_daily
+FROM fact_creator_onboarding_metrics
+ORDER BY event_date DESC;
+
+--  How many verifications fail or delay?
+SELECT 
+    event_date,
+    rejected_verifications,
+    pending_verifications,
+    avg_verification_time,
+    rejection_reasons
+FROM fact_creator_onboarding_metrics
+WHERE rejected_verifications > 0 
+    OR pending_verifications > 0
+ORDER BY event_date DESC;

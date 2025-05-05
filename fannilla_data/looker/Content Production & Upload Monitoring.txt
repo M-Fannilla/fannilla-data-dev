@@ -1,0 +1,18 @@
+How many uploads happen each day/week?
+
+   SELECT 
+       event_date,
+       SUM(total_transcode_attempts) as daily_uploads
+   FROM fact_content_transcoding_metrics
+   GROUP BY event_date
+   ORDER BY event_date;
+
+Are there spikes in transcoder failures?
+   SELECT 
+       event_date,
+       transcoder_type,
+       failure_rate,
+       failed_transcodes
+   FROM fact_content_transcoding_metrics
+   WHERE failure_rate > 0.1  -- Alert threshold of 10%
+   ORDER BY failure_rate DESC;

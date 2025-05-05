@@ -1,0 +1,19 @@
+-- What is the rate of account deactivations?
+SELECT 
+    event_date,
+    daily_deletion_rate,
+    daily_churn_rate,
+    deleted_accounts,
+    cumulative_deleted_accounts
+FROM fact_user_lifecycle_metrics
+ORDER BY event_date DESC;
+
+-- How many accounts are fully deleted?
+SELECT 
+    event_date,
+    deleted_accounts,
+    cumulative_deleted_accounts,
+    same_day_deletions,
+    avg_days_to_deletion
+FROM fact_user_lifecycle_metrics
+ORDER BY event_date DESC;

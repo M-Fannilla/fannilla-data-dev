@@ -1,0 +1,100 @@
+version: 2
+
+models:
+  - name: fact_user_lifecycle_metrics
+    description: "Fact table containing daily metrics for user account lifecycle from creation to deletion"
+    columns:
+      - name: event_date
+        description: "The date of the events"
+        tests:
+          - not_null
+
+      - name: new_accounts
+        description: "Number of new accounts created on the date"
+        tests:
+          - not_null
+
+      - name: active_accounts
+        description: "Number of active accounts on the date"
+        tests:
+          - not_null
+
+      - name: unverified_accounts
+        description: "Number of accounts that haven't verified their email"
+        tests:
+          - not_null
+
+      - name: incomplete_accounts
+        description: "Number of accounts with incomplete signup"
+        tests:
+          - not_null
+
+      - name: deleted_accounts
+        description: "Number of accounts deleted on the date"
+        tests:
+          - not_null
+
+      - name: platform_active_users
+        description: "Number of users with active platform status"
+        tests:
+          - not_null
+
+      - name: suspended_users
+        description: "Number of suspended users"
+        tests:
+          - not_null
+
+      - name: banned_users
+        description: "Number of banned users"
+        tests:
+          - not_null
+
+      - name: avg_hours_to_email_verification
+        description: "Average time taken to verify email"
+
+      - name: avg_hours_to_signup_completion
+        description: "Average time taken to complete signup"
+
+      - name: avg_days_to_deletion
+        description: "Average time from creation to deletion"
+
+      - name: avg_account_age_days
+        description: "Average age of accounts in days"
+
+      - name: total_deleted_accounts
+        description: "Total number of deleted accounts"
+        tests:
+          - not_null
+
+      - name: same_day_deletions
+        description: "Number of accounts deleted on the same day they were created"
+        tests:
+          - not_null
+
+      - name: cumulative_new_accounts
+        description: "Cumulative number of new accounts"
+        tests:
+          - not_null
+
+      - name: cumulative_deleted_accounts
+        description: "Cumulative number of deleted accounts"
+        tests:
+          - not_null
+
+      - name: retention_rate
+        description: "Rate of account retention (active accounts / total accounts)"
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0 and <= 1"
+
+      - name: daily_deletion_rate
+        description: "Rate of account deletions (deleted accounts / total accounts)"
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0 and <= 1"
+
+      - name: daily_churn_rate
+        description: "Daily churn rate (deletions / active accounts)"
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0 and <= 1" 

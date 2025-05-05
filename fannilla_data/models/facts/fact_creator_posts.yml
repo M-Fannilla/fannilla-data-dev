@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: fact_creator_posts
+    description: >
+      Fact table containing information about creator posts, including their content type,
+      pricing, and scheduling details. This table is sourced from creator post events.
+    columns:
+      - name: post_id
+        description: Unique identifier for the post
+        tests:
+          - unique
+          - not_null
+      
+      - name: creator_id
+        description: ID of the creator who made the post
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_users')
+              field: user_id
+      
+      - name: post_audience
+        description: Target audience for the post
+      
+      - name: post_price
+        description: Price set for the post content
+      
+      - name: has_audio
+        description: Boolean indicating if the post contains audio content
+      
+      - name: has_video
+        description: Boolean indicating if the post contains video content
+      
+      - name: has_image
+        description: Boolean indicating if the post contains image content
+      
+      - name: hashtags
+        description: Array of hashtags associated with the post
+      
+      - name: widget_id
+        description: ID of the widget associated with the post
+      
+      - name: expiration_date
+        description: Date when the post content expires
+      
+      - name: scheduled_post_date
+        description: Date when the post is scheduled to be published 

@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-- name: { ? { var('fanilla_bq_dataset') } } # dataset name
-  database: { ? { var('fannilla_gcp_project') } } # project name (top value)
+- name: { var('fanilla_bq_dataset') } # dataset name
+  database: { var('fannilla_gcp_project') } # project name (top value)
   tables:
   # RealTime -- payments and orders
   - name: users_orders
@@ -21,3 +21,6 @@ sources:
 
   - name: image_transcoder_failed
   - name: video_transcoder_failed
+
+  # UserOptins
+  - name: user_optin

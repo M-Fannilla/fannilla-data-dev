@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: fact_user_content_interactions
+    description: >
+      Fact table tracking user interactions with content, including views, likes, and other
+      engagement metrics. This table is materialized as a view and sourced from user content
+      interaction events.
+    columns:
+      - name: user_id
+        description: ID of the user who interacted with the content
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_users')
+              field: user_id
+      
+      - name: creator_id
+        description: ID of the creator whose content was interacted with
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_users')
+              field: user_id
+      
+      - name: content_id
+        description: ID of the content that was interacted with
+        tests:
+          - not_null
+      
+      - name: content_type
+        description: Type of content that was interacted with (e.g., post, story)
+        tests:
+          - not_null
+      
+      - name: interaction_type
+        description: Type of interaction performed (e.g., view, like, comment)
+        tests:
+          - not_null 

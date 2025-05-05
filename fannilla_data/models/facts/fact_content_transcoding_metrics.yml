@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: fact_content_transcoding_metrics
+    description: "Fact table containing daily metrics for content transcoding operations"
+    columns:
+      - name: event_date
+        description: "The date of the transcoding events"
+        tests:
+          - not_null
+
+      - name: transcoder_type
+        description: "Type of transcoder (image, video, audio)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['image', 'video', 'audio']
+
+      - name: content_type
+        description: "Type of content being transcoded"
+
+      - name: successful_transcodes
+        description: "Number of successful transcoding operations"
+        tests:
+          - not_null
+
+      - name: failed_transcodes
+        description: "Number of failed transcoding operations"
+        tests:
+          - not_null
+
+      - name: total_transcode_attempts
+        description: "Total number of transcoding attempts (successful + failed)"
+        tests:
+          - not_null
+
+      - name: failure_rate
+        description: "Rate of transcoding failures (failed / total attempts)"
+
+      - name: avg_execution_time
+        description: "Average execution time for successful transcoding operations"
+
+      - name: avg_time_to_publish
+        description: "Average time taken to publish transcoded content"
+
+      - name: avg_queue_time
+        description: "Average time spent in the transcoding queue"
+
+      - name: total_queued_requests
+        description: "Total number of requests that were queued"
+
+      - name: total_processed_items
+        description: "Total number of items processed by the transcoder" 

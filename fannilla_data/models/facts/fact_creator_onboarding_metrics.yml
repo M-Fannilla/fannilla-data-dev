@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: fact_creator_onboarding_metrics
+    description: "Fact table containing daily metrics for creator onboarding and verification process"
+    columns:
+      - name: event_date
+        description: "The date of the events"
+        tests:
+          - not_null
+
+      - name: total_users
+        description: "Total number of users in the system"
+        tests:
+          - not_null
+
+      - name: total_creators
+        description: "Total number of users who are creators"
+        tests:
+          - not_null
+
+      - name: approved_verifications
+        description: "Number of approved creator verifications"
+        tests:
+          - not_null
+
+      - name: rejected_verifications
+        description: "Number of rejected creator verifications"
+        tests:
+          - not_null
+
+      - name: pending_verifications
+        description: "Number of pending creator verifications"
+        tests:
+          - not_null
+
+      - name: verification_success_rate
+        description: "Rate of successful verifications (approved / (approved + rejected))"
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0 and <= 1"
+
+      - name: avg_verification_time
+        description: "Average time (in hours) taken for verification process"
+
+      - name: avg_email_verification_time
+        description: "Average time (in hours) taken for email verification"
+
+      - name: avg_signup_completion_time
+        description: "Average time (in hours) taken to complete signup"
+
+      - name: rejection_reasons
+        description: "Aggregated list of rejection reasons for failed verifications"
+
+      - name: verificators
+        description: "List of verificators who processed the verifications"
+
+      - name: new_creators_daily
+        description: "Number of new creators added on each day" 
