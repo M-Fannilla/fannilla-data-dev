@@ -5,4 +5,4 @@ SELECT
     order_type,
     item_id,
 
-FROM {{ source(var('fanilla_bq_dataset'), 'user_orders') }}
+FROM {{ source(var('fanilla_bq_dataset'), 'user_order') }}

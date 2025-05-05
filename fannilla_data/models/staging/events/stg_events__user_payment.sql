@@ -6,4 +6,4 @@ SELECT
     amount,
     currency
 
-FROM {{ source(var('fanilla_bq_dataset'), 'user_payments') }}
+FROM {{ source(var('fanilla_bq_dataset'), 'user_payment') }}
